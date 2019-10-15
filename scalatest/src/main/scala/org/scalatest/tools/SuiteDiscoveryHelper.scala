@@ -239,7 +239,12 @@ private[scalatest] object SuiteDiscoveryHelper {
   //
   // Returns Some(<class name>) if processed, else None
   private def processClassName(className: String, loader: ClassLoader, suffixes: Option[Pattern]): Option[String] = {
-
+    System.out.println("processClassName")
+    System.out.println(className);
+    System.out.println(classNameSuffixOkay(className, suffixes));
+    System.out.println(isDiscoverableSuite(className, loader));
+    System.out.println(isAccessibleSuite(className, loader));
+    System.out.println(isRunnable(className, loader));
     if (classNameSuffixOkay(className, suffixes) && isDiscoverableSuite(className, loader)
         && 
         (isAccessibleSuite(className, loader) || isRunnable(className, loader))) 
