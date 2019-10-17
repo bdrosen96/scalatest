@@ -23,7 +23,7 @@ object ScalatestBuild extends Build {
 
   // To temporarily switch sbt to a different Scala version:
   // > ++ 2.10.5
-  val buildScalaVersion = "2.12.8"
+  val buildScalaVersion = "2.11.12"
 
   val releaseVersion = "3.0.8"
 
@@ -76,7 +76,7 @@ object ScalatestBuild extends Build {
   def getJavaHome(scalaMajorVersion: String): Option[File] = {
     scalaMajorVersion match {
       case "2.10" | "2.11" =>  // force to use Java 6
-        if (!System.getProperty("java.version").startsWith("1.6"))
+        if (!System.getProperty("java.version").startsWith("1.8"))
           throw new IllegalStateException("Please use JDK 6 to build for Scala 2.10 and 2.11.")
 
       case _ =>
