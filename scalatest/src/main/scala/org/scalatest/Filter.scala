@@ -237,7 +237,12 @@ final class Filter private (val tagsToInclude: Option[Set[String]], val tagsToEx
     val tags: Map[String, Set[String]] = mergeTestDynamicTags(testTags, suiteId, testNames)
     verifyPreconditionsForMethods(testNames, tags)
 
+    System.out.println("runnable")
     val testNamesAsList = testNames.toList // to preserve the order
+    for (testName <- testNamesAsList) {
+        System.out.println(testName)
+        System.out.println(tags(testName))
+    }
     val runnableTests = 
       for {
         testName <- includedTestNames(testNamesAsList, tags)
